@@ -2,12 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 
-import db from "../dialects/sqlite/config/database.config.js";
+import sequelize from "../dialects/sqlite/config/database.config.js";
 
 import * as functions from "../functions/index.js";
 
-// You dont need db.authenticate for sqlite
-db.sync().then(() => {
+// It's should have a better name for connection test in the future
+sequelize.authenticate().then(() => {
   console.log("Connected to DB.");
 });
 
